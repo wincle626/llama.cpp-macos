@@ -1,0 +1,17 @@
+export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin 
+cmake .. \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_PREFIX_PATH="$HOME/Workspaces/Openclworkspace/llama.cpp-main/opencl" \
+  -DBUILD_SHARED_LIBS=OFF \
+  -DCMAKE_C_COMPILER=/usr/bin/clang \
+  -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
+  -DGGML_OPENCL=ON \
+  -DGGML_METAL=OFF \
+  -DLLAMA_BUILD_SERVER=OFF \
+  -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -lc++" \
+  -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++ -lc++" \
+  -DGGML_WERROR=OFF \
+  -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15 \
+  -DCMAKE_CXX_FLAGS="-w -fvisibility-inlines-hidden -Wno-everything -stdlib=libc++ -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS" \
+  -DCMAKE_C_FLAGS="-w  -fvisibility-inlines-hidden -Wno-everything -stdlib=libc++" 
+

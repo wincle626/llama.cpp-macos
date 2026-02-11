@@ -1,6 +1,20 @@
 cmake_minimum_required(VERSION 3.14) # for add_link_options and implicit target directories.
+set(CMAKE_CXX_COMPILER "clang++")
+set(CMAKE_C_COMPILER "clang")
+set(CMAKE_CXX_STANDARD 11)
 project("llama.cpp" C CXX)
 include(CheckIncludeFileCXX)
+
+link_libraries(c++)
+add_link_options("-lc++")
+include_directories(/usr/local/include)
+add_compile_options(
+	-w
+	-Wno-everything
+	-stdlib=libc++
+    )
+# Ensure warnings don't stop the build
+set(GGML_WERROR OFF CACHE BOOL "" FORCE)
 
 #set(CMAKE_WARN_DEPRECATED YES)
 set(CMAKE_WARN_UNUSED_CLI YES)
